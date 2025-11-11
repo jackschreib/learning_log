@@ -43,6 +43,7 @@ def new_topic(request):
             new_topic.save()
             return redirect('learning_logs:topics')
 
+    context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', {'form': form})
 
 
