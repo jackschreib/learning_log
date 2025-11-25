@@ -17,6 +17,8 @@ class Entry(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
+    hours_spent = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    study_date = models.DateField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'entries'

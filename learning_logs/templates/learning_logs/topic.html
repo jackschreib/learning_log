@@ -15,9 +15,20 @@
     <div class="card mb-3">
       <h4 class="card-header">
         {{ entry.date_added|date:'M d, Y H:i' }}
-        <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a></small>
+        <small>
+          <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
+        </small>
       </h4>
-      <div class="card-body">{{ entry.text|linebreaks }}</div>
+
+      <div class="card-body">
+        <p>{{ entry.text|linebreaks }}</p>
+
+        <!-- NEW: hours spent + study date -->
+        <p class="text-muted mb-0">
+          <strong>Hours Spent:</strong> {{ entry.hours_spent }}<br>
+          <strong>Study Date:</strong> {{ entry.study_date|date:"M d, Y" }}
+        </p>
+      </div>
     </div>
   {% empty %}
     <p>There are no entries for this topic yet.</p>
